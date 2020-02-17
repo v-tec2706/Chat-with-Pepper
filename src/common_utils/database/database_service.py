@@ -1,11 +1,11 @@
-from chatterbot.storage import MongoDatabaseAdapter
+import random
 
-import configuration
-from src.common_utils.custom_exceptions import ResponseTextByTagsNotFoundError
+from chatterbot.storage import MongoDatabaseAdapter
+from pymongo import MongoClient
+
 from src.common_utils.custom_exceptions import CollectionAlreadyExistsInDatabaseError
 from src.common_utils.custom_exceptions import CollectionNotExistsInDatabaseError
-from pymongo import MongoClient
-import random
+from src.common_utils.custom_exceptions import ResponseTextByTagsNotFoundError
 
 
 def is_invalid_arg(arg):
@@ -107,6 +107,14 @@ class DatabaseProxy:
             return docs_found
         raise TypeError('Argument tags_list is not list')
 
+    def get_one_doc_from_collection_by_tags_list(self, collection_name, tags_list):
+        if isinstance(tags_list, list):
+            docs_found = self.get_docs_from_collection_by_tags_list(collection_name, tags_list)
+            for elem in docs_found:
+                if set(elem['tags']) == set(tags_list):
+                    return elem
+        return None
+
     # part of code for collections other than statements
     def create_new_collection(self, collection_name):
         if collection_name not in self.collections_db.collection_names():
@@ -114,18 +122,24 @@ class DatabaseProxy:
             return True
         raise CollectionAlreadyExistsInDatabaseError
 
-    def create_new_capped_collection(self, collection_name, max_size):
+    def create_new_capped_collection(self, collection_name, max_size=1):
         if collection_name not in self.collections_db.collection_names():
             self.collections_db.create_collection(name=collection_name, capped=True,
                                                   size=max_size * 4096,
                                                   max=max_size)
+            return True
+        raise CollectionAlreadyExistsInDatabaseError
 
-    def get_elements_of_capped_collection(self, collection_name, n=-1, m=-1):
+    def get_sorted_collection_elements(self, collection_name, field_to_sort_by, order=-1, n=5):
+        """returns n elements of collection sorted in ascending(1) or descending(-1) order"""
+        return self.collections_db[collection_name].find().sort(field_to_sort_by, order).limit(n)
+
+    def get_elements_of_capped_collection(self, collection_name, dict_key, n=-1, m=-1):
         """ returns elements from n-th to m-th index of collection, for n,m = -1 returns all elements """
         try:
             responses = []
             for x in list(self.collections_db[collection_name].find())[::-1]:
-                responses.append(x['response'])
+                responses.append(x[dict_key])
             if n == -1 and m == -1:
                 return responses
             else:
@@ -139,10 +153,16 @@ class DatabaseProxy:
             return True
         raise CollectionNotExistsInDatabaseError
 
+    def clear_collection(self, collection_name):
+        if collection_name in self.collections_db.collection_names():
+            self.collections_db[collection_name].remove({})
+            return True
+        raise CollectionNotExistsInDatabaseError
+
     def add_new_doc_to_collection(self, collection_name, **doc):
         if collection_name in self.collections_db.collection_names():
             collection = self.collections_db[collection_name]
-            res = collection.insert_one(doc)
+            collection.insert_one(doc)
             return True
         raise CollectionNotExistsInDatabaseError
 

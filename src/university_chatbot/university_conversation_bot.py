@@ -1,5 +1,6 @@
 from chatterbot import ChatBot
-from configuration import REQUESTS_IN_ROW_THRESH
+
+from configuration import Configuration
 
 
 class UniversityBot:
@@ -12,7 +13,7 @@ class UniversityBot:
         return self._bot
 
     def check_was_requested_in_row_above_thresh(self):
-        return self._responses_in_row >= REQUESTS_IN_ROW_THRESH
+        return self._responses_in_row >= Configuration.REQUESTS_IN_ROW_THRESH.value
 
     def inc_responses_in_row(self):
         self._responses_in_row += 1

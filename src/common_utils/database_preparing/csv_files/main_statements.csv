@@ -1,0 +1,85 @@
+//put responses with groups they belongs to separated by '#' as you can see below:
+
+cześć#greeting
+siemka#greeting
+hejooo#greeting
+witaj#greeting
+witam#greeting
+siemasz#greeting
+serwus#greeting
+dzień dobry#greeting
+
+// statements used just after greeting
+jak się masz?#greeting_response
+co u Ciebie słychać?#greeting_response
+jak leci?#greeting_response
+jak się czujesz?#greeting_response
+co tam?#greeting_response
+jak tam?#greeting_response
+jak ci mija dzień?#greeting_response
+
+
+// response when speaker wants to continue without introduction
+Nauczono mnie by nie odpowiadać obcym,najpierw się poznajmy#no_introduction_message
+Nie odpowiadam obcym,najpierw się poznajmy#no_introduction_message
+Jeszcze się nie znamy,zmieńmy to,#no_introduction_message
+
+// request about name
+jak masz na imię#name_request
+jak się nazywasz#name_request
+jak cię nazwano#name_request
+jakie jest twoje imię#name_request
+
+// introduction expressions
+mam na imię                                                                       ,a ty#name_response
+moje imię to                                                                      ,a twoje#name_response
+nazwano mnie                                                                      ,a ciebie#name_response
+jestem                                                                            ,a ty#name_response
+ja jestem                                                                         ,a ty#name_response
+
+
+miło cię poznać#name_response_end
+bardzo mi miło#name_response_end
+cieszę się#name_response_end
+fajne imię#name_response_end
+
+// prompting sentence
+w czym mogę ci pomóc?#general_conversation_intro
+o co chcesz mnie spytać?#general_conversation_intro
+jak mogę pomóc?#general_conversation_intro
+czego chcesz się dowiedzieć?#general_conversation_intro
+
+Pepper#my_name
+
+// basic question
+u mnie wszystko okej#basic_question_response
+u mnie w porządku#basic_question_response
+wszystko super#basic_question_response
+jest okej#basic_question_response
+bez problemów#basic_question_response
+
+,miło że pytasz#basic_question_response_end
+,dzięki#basic_question_response_end
+                                                                                  ,ładnie z twojej strony że pytasz#basic_question_response_end
+
+a ty#basic_question_request
+a tobie#basic_question_request
+jak się masz?#basic_question_request
+
+powiedzieć#continue
+więcej#continue
+dużo#continue
+
+
+przykro mi                                                                        ,to wszystko co wiem#cannot_say_more
+to wszystko co wiem na ten temat#cannot_say_more
+nie wiem więcej#cannot_say_more
+na tę chwilę to musi wystarczyć#cannot_say_more
+
+ile#numb_adpt_single_keyword
+ilu#numb_adpt_single_keyword
+które#numb_adpt_single_keyword
+jak#numb_adpt_compl_keyword
+wiele#numb_adpt_compl_keyword
+wielu#numb_adpt_compl_keyword
+dużo#numb_adpt_compl_keyword

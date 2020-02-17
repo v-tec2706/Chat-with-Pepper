@@ -5,3 +5,5 @@ src/general_chatbot/__pycache__/
 src/university_chatbot/__pycache__/
 src/main_chat/__pycache__/
 src/common_utils/language_utils/__pycache__/
+*.pyc
+.idea/*

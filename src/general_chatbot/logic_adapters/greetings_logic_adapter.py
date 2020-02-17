@@ -2,6 +2,7 @@ from chatterbot.conversation import Statement
 from chatterbot.logic import LogicAdapter
 
 import src.common_utils.language_utils.statement_utils as statement_utils
+from configuration import Configuration
 from src.common_utils.types_of_conversation import TypeOfOperation
 
 
@@ -30,6 +31,9 @@ class GreetingAdapter(LogicAdapter):
                     greetings,
                     greetings_request),
                 in_response_to=TypeOfOperation.GREETING.value)
-            result.confidence = 1
+            result.confidence = 1.0
+            self.db.add_new_doc_to_collection(Configuration.RESPONSES_COLLECTION.value,
+                                              confidence=result.confidence,
+                                              response=result.text)
             return result
         return statement_utils.default_response()

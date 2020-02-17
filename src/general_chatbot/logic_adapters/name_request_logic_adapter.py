@@ -4,6 +4,7 @@ from chatterbot.conversation import Statement
 from chatterbot.logic import LogicAdapter
 
 import src.common_utils.language_utils.statement_utils as statement_utils
+from configuration import Configuration
 from src.common_utils.language_utils.sentence_filter_utils import SentenceFilter
 from src.common_utils.types_of_conversation import TypeOfOperation
 
@@ -23,12 +24,21 @@ class NameRequestAdapter(LogicAdapter):
         for x in statement.text.lower().split():
             statement_elements_set.add(x)
         name_requests = self.db.get_responses_list_by_tags(tag="name_request")
+        name_responses = self.db.get_responses_list_by_tags(tag="name_response")
         splitted_name_requests = set()
 
-        splitted_name_requests = statement_utils.split_to_single_words(splitted_name_requests, name_requests)
+        splitted_name_requests = statement_utils.split_to_single_words(splitted_name_requests,
+                                                                       map(lambda
+                                                                               x: statement_utils.filter_unexpected_signs(
+                                                                           x.lower(), ','), name_requests))
+        splitted_name_requests = statement_utils.split_to_single_words(splitted_name_requests,
+                                                                       map(lambda
+                                                                               x: statement_utils.filter_unexpected_signs(
+                                                                           x.lower(), ','), name_responses))
+
 
         if len(statement_elements_set.intersection(
-                splitted_name_requests)) > 1:
+                splitted_name_requests)) >= 1:
             if self.context.is_name_request_processed and not self.context.is_after_name_response_reaction:
                 self.name_response = True  # case when speaker introduced himself
                 return True
@@ -54,7 +64,7 @@ class NameRequestAdapter(LogicAdapter):
                 tmp = name_response.split(',')
                 if len(tmp) == 2:
                     (request1, request2) = tmp
-                name_responses_splitted.append((request1, request2))
+                    name_responses_splitted.append((request1, request2))
 
             my_name = self.db.get_first_response_by_tags(tag="my_name")
             (response_text1, response_text2) = name_responses_splitted[random.randint(0, len(name_responses) - 1)]
@@ -72,6 +82,9 @@ class NameRequestAdapter(LogicAdapter):
                 response),
                 in_response_to=TypeOfOperation.NAME.value)
             result.confidence = 0.3
+            self.db.add_new_doc_to_collection(Configuration.RESPONSES_COLLECTION.value,
+                                              confidence=result.confidence,
+                                              response=result.text)
             return result
         return statement_utils.default_response()
 
@@ -86,11 +99,16 @@ class NameRequestAdapter(LogicAdapter):
         general_conversation_intro = self.db.get_random_response_by_tags(tag="general_conversation_intro")
 
         if name_conversation_end_responses is not None and general_conversation_intro is not None:
-            return Statement(statement_utils.prepare_statement(
+            result = Statement(statement_utils.prepare_statement(
                 name_conversation_end_responses,
                 self.context.speaker_name,
                 general_conversation_intro
-            ), confidence=0.4, in_response_to=TypeOfOperation.CONTEXT_NAME.value)
+            ), in_response_to=TypeOfOperation.CONTEXT_NAME.value)
+            self.db.add_new_doc_to_collection(Configuration.RESPONSES_COLLECTION.value,
+                                              confidence=result.confidence,
+                                              response=result.text)
+            result.confidence = 0.4
+            return result
         return statement_utils.default_response()
 
     def process(self, statement, additional_respones_parameters):

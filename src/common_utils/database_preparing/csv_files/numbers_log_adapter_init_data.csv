@@ -1,0 +1,48 @@
+//data for numbers_quest_logic_adapter
+uczelnia#kierunek#na akademii górniczo hutniczej działa 62 kierunki
+uczelnia#student#osoba#na akademi górniczo hutniczej studiuje około 27 i pół tysiąca studentów włączając słuchaczy studiów podyplomowych
+studia#stacjonarny#pierwszy#drugi#student#na akademi górniczo hutniczej na studia stacjonarne pierwszego  i drugiego stopnia uczęszcza ponad 20 tysięcy studentów
+studia#niestacjonarny#pierwszy#drugi#student#na studia niestacjonarne pierwszego  i drugiego stopnia uczęszcza około 3 o pół tysiąca studentów
+studia#doktor#doktorancki#doktorant#na studia doktoranckie stacjonarne i niestacjonarne uczęszcza ponad tysiąc doktorantów
+studia#podyplomowy#student#na studiach podyplomowych na akademi górniczo hutniczej studiuje ponad 2 i pół tysiąca studentów
+uczelnia#obcokrajowiec#student#studiować#na akademii górniczo hutniczej studiuje prawie siedemset obcokrajowców
+uczelnia#pracownik#dydaktyczny#naukowy#uczelnia zatrudnia ponad 4 tysiące pracowników w tym pracownicy naukowo dydaktyczni w liczbie ponad tysiąc osiemset osób pracownicy dydaktyczni ponad dwieście siedemdziesiąt osób dyplomowani bibliotekarze sześć osób
+dom#studencki#akademik#uczelnia#akademia górniczo hutnicza posiada 20 domów studenckich dla studentów i gości oferujących blisko 7500 miejsc
+uczelnia#wydział#akademia górniczo hutnicza prowadzi studia na szesnastu wydziałach
+uczelnia#profesor#zwyczajny#nadzwyczajny#na uczelni pracuje naukowo około 140 profesorów zwyczajnych około 270 profesorów nadzwyczajnych i blisko 70 naukowców z tytułem profesora
+uczelnia#adiunkt#doktor#habilitowany#liczba adiunktów na uczelni to blisko 1100 naukowców w tym ponad 250 doktorów habilitowanych
+uczelnia#asystent#doktor#na uczelni pracuje około 370 naukowców asystentów w tym blisko 170 ze stopniem doktora
+uczelnia#wykładowca#stary#na akademii pracuje około 170 starszych wykładowców oraz ponad 60 wykładowców
+uczelnia#wykładowca#na uczelni pracuje około 60 wykładowców oraz blisko 170 starszych wykładowców
+uczelnia#lektor#instruktor#na uczelni jest około 40 lektorów i około dziesięciu instruktorów
+uczelnia#bibliotekarz#na akademii pracuje sześcioro bibliotekarzy dyplomowanych
+uczelnia#miejsce#ranking#perespektyw#perespektywy#akademia zajęła drugie miejsce wśród uczelni technicznych w rankingu Perspektyw 2019. uczelnia ma najlepsze studia inżynierskie w Polsce na ośmiu kierunkach stan na 2019
+uczelnia#studia#inżynierski#polska#uczelnia ma najlepsze studia inżynierskie w Polsce na ośmiu kierunkach stan na 2019
+uczelnia#polski#diament#forbesa#ranking#uczelnia ma pierwsze miejsce wśród polskich uczelni w rankingu Diamenty Forbesa stan na 2017
+uczelnia#ranking#kuźnia#prezes#rzeczpospolita#uczelnia zajęła trzecie miejsce w rankingu Kuźnia Prezesów Rzeczpospolitej stan na 2018
+uczelnia#ranking#zagraniczny#miejsce#techniczny#polski#akademia zajęła drugie miejsce wśród polskich uczelni technicznych w zestawieniu QS World University Rankings 2020 a także pierwsze miejsce wśród polskich uczelni technicznych w University Ranking by Academic Performance stan na 2019
+uczelnia#absolwent#studia#Akademia wykształciła ponad 170 000 inżynierów i magistrów zapewniając kadrę dla polskiej gospodarki
+katedra#informatyka#osoba#Na katedrze informatyki wydziału informatyki elektroniki i telekomunikacji pracuje ponad 60 pracowników naukowo dydaktycznych oraz około 30 pracowników administracyjno technicznych
+koło#naukowy#uczelnia#Na uczelni działa około 120 studenckich kół naukowych
+sekcja#sportowy#klub#Uczelniany klub azs agh ma 20 sekcji sportowych
+budynek#kampus#uczelnia#Na kampusie agh znajduje się mnóstwo budynków jak na przykład pawilony dydaktyczno naukowe domy studenckie hale sportowe kluby studenckie stołówki przychodnie zdrowia obiekty handlowo usługowe
+powierzchnia#kampus#uczelnia#Powierzchnia kampusu uniwersyteckiego agh to 38 hektarów
+powierzchnia#miasteczko#studencki#Powierzchnia miasteczka studenckiego agh to 13 hektarów.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
